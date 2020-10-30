@@ -9,26 +9,36 @@ use Illuminate\Support\Facades\Mail;
 
 class Email
 {
-    private $user_email;
-    private $content;
 
+     /**
+     * @param string $receive_address 收件地址
+     * @param string $email_title 邮件主题
+     * @param mixed|object|array $email_receiver 收件人【相关信息】
+     * @param mixed|array $view_info 模板页面信息
+     * @param string  $annex 附件[file路径]
+     * @param string $annex_name
+     */
+    public static function sendEmail( $receive_address,$email_title,$email_receiver,$view_info,$annex){
+        Mail::send('',compact('view_info','email_receiver'),function ($message)
+        use ($receive_address,$email_title,$annex) {
 
-    public function __construct($email)
-    {
-        $this->user_email = $email;
-    }
-
-    public function sendEmail(){//发邮件
-        $info = '';
-        $receive_email = '';
-        Mail::send('',compact('info'),function ($message) use ($receive_email) {
-            $to = $receive_email;
-            $message->to($to)->subject();
+            //$file = storage_path();
+            $message->to($receive_address)->subject($email_title);
         });
+
+        if(count(Mail::failures()) < 1){
+            echo '发送邮件成功，请查收！';
+        }else{
+            echo '发送邮件失败，请重试！';
+        }
     }
 
-    public function getFile(Request $request){
-
+    /**
+     * Email constructor.
+     */
+    public function __construct()
+    {
     }
+
 
 }
