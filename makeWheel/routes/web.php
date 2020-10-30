@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::match(['post','get'],'/test/send','TestController@email')->name('send');
