@@ -34,7 +34,9 @@ class File
 
             //按日期创建临时文件夹
             $bool = Storage::disk()->put(date('Y-M-D').'/'.$file_name,file_get_contents($file->getRealpath()));//存到指定磁盘
-
+            if(!$bool){
+                return false;
+            }
             $path = Storage::url($file_name);
 
             return $path;
