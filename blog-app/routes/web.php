@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes(['verify'=>true]);//开启邮箱验证
+
+Route::get('/home', 'HomeController@index')->name('home');
