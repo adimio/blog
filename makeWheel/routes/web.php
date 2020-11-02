@@ -26,3 +26,7 @@ Route::get('/test/view/2',function(){
     return view('email.emailSend');
 });
 
+
+//Auth::routes();
+Auth::routes(['verify' => true]);//注册验证路由
+Route::get('/home', 'HomeController@index')->name('home');
