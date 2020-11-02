@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::match(['post','get'],'/test/send','TestController@email')->name('send');
+
+Route::match(['post','get'],'/test/ue','UEController@ue')->name('u.editor');
