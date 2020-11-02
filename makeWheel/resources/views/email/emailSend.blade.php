@@ -5,17 +5,55 @@
     <meta charset="utf-8">
     @include('vendor.UEditor.head')
     <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
+    <style>
+        html {
+            background-color: #A8A297;
+        }
+         #page-head {
+             height: 40px;
+             //background-color: #00b7ee;
+             border-bottom: 1px dashed #686868;
+             line-height: 40px;
+         }
+        #email-form {
+            margin: auto;
+            width: 1200px;
+        }
+        #email-form .l {
+            display: inline-block;
+            width: 80px;
+        }
+        #mail-content {
+            width: 600px;
+            margin-left: 80px;
+        }
+        #email-form input[type=submit] {
+            margin-left: 700px;
+        }
+    </style>
 </head>
 <body>
-<form method="post" action="{{ route('send') }}">
-    {{ csrf_field() }}
-    收件人：<input name="receiver" type="email"><br>
-    邮件主题：<input name="subject" type="text"><br>
-    邮件内容：<br>
-    <script id="mail-content" name="content" type="text/plain">
-    </script>
-    <input type="submit" value="发送">
-</form>
+<header id="page-head">
+   sendEmail=>
+</header>
+<div id="email-form" >
+    <form method="post" action="{{ route('send') }}">
+        {{ csrf_field() }}
+        <span class="l">收件人:</span>
+        <span class="r">
+            <input name="receiver" type="email">
+        </span><br>
+        <span class="l">邮件主题:</span>
+        <span class="r">
+            <input name="subject" type="text">
+        </span><br>
+        邮件内容：<br>
+        <script id="mail-content" name="content" type="text/plain">
+        </script>
+        <input type="submit" value="发送">
+    </form>
+</div>
+
 <script>
     var toolbar = [
         [

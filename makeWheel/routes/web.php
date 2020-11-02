@@ -18,3 +18,11 @@ Route::get('/', function () {
 Route::match(['post','get'],'/test/send','TestController@email')->name('send');
 
 Route::match(['post','get'],'/test/ue','UEController@ue')->name('u.editor');
+
+Route::get('/test/view/1',function(){
+    return view('email.emailContent');
+});
+Route::get('/test/view/2',function(){
+    return view('email.emailSend');
+});
+

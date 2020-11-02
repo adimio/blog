@@ -14,7 +14,7 @@
 <body>
 <section id="email">
     <div class="title">你好，user</div>
-    <div class="content"></div>
+    <div class="content">{{ $data }}</div>
     <div>
         <div class="signature">{{ Auth::user()->name }}</div>
         <div class="date">{{ date('Y-M-D h:i:s') }}&nbsp;+8:00:00</div>
